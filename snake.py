@@ -25,6 +25,7 @@ class Snake:
     - down
     - left
     - right
+    - reset
     """
 
     def __init__(self):
@@ -68,6 +69,16 @@ class Snake:
             self.segments[seg_num].goto(new_x, new_y)
 
         self.segments[0].forward(MOVE_DISTANCE)
+
+    def reset(self):
+        """Resets the snake to the start the snake"""
+
+        # Removes the old segments from the screen
+        for seg in self.segments:
+            seg.goto(1000,1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     
     def up(self):
